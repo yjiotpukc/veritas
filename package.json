@@ -1,0 +1,45 @@
+{
+  "name": "veritas",
+  "private": false,
+  "version": "0.0.1",
+  "module": "./dist/veritas.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/veritas.js"
+    },
+    "./dist/": {
+      "import": "./dist/"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "rimraf build/**/* && tsc && vite build && dts-bundle-generator --config ./dts-bundle-generator.config.ts && copyfiles ./package.json build",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
+    "lint": "eslint .",
+    "format": "prettier . --write",
+    "prepare": "husky && echo 'npx lint-staged' > .husky/pre-commit && git add .husky/pre-commit",
+    "uninstall-husky": "npm uninstall husky --no-save && git config --unset core.hooksPath && npx rimraf .husky"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "@vitest/coverage-v8": "^2.0.4",
+    "copyfiles": "^2.4.1",
+    "dts-bundle-generator": "^9.5.1",
+    "eslint": "^9.9",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "husky": "^9.1.4",
+    "lint-staged": "^15.2.7",
+    "prettier": "^3.3.3",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3",
+    "vite": "^5.3.5",
+    "vitest": "^2.0.4"
+  }
+}
